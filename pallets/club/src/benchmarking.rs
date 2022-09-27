@@ -6,15 +6,15 @@ use super::*;
 use crate::Pallet as PalletClub;
 use frame_benchmarking::{benchmarks, whitelisted_caller};
 use frame_system::RawOrigin;
-use rand::Rng;
 
 benchmarks! {
 	add_club_member {
-		let club_name = rand::thread_rng().gen::<[u8; 32]>();
+		let s in 0 .. ((100 as u64)).try_into().unwrap();
+		let club_name = s.to_be_bytes().to_vec();
 		let caller: T::AccountId = whitelisted_caller();
-	}: _(RawOrigin::Root, club_name.into(), caller.clone())
+	}: _(RawOrigin::Root, club_name.clone(), caller.clone())
 	verify {
-        assert_event::<T>(Event::ClubMemberAdded(club_name.into(), caller).into());  
+        assert_event::<T>(Event::ClubMemberAdded(club_name, caller).into());  
 	}
 
 	// remove_club_member {
