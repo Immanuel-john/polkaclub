@@ -14,12 +14,18 @@ mod tests;
 #[cfg(feature = "runtime-benchmarks")]
 mod benchmarking;
 
+pub mod weights;
+pub use weights::WeightInfo;
 
 #[frame_support::pallet]
 pub mod pallet {
+
+	use super::*;
+
 	use frame_support::pallet_prelude::*;
 	use frame_system::pallet_prelude::*;
 	use scale_info::prelude::vec::Vec;
+
 	#[pallet::pallet]
 	#[pallet::generate_store(pub(super) trait Store)]
 	#[pallet::without_storage_info]
@@ -34,7 +40,7 @@ pub mod pallet {
 		#[pallet::constant]
 		type MaxMembers: Get<u32>;
 
-		// type WeightInfo: WeightInfo;
+		type WeightInfo: WeightInfo;
 	}
 
 	#[pallet::storage]

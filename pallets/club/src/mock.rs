@@ -1,5 +1,5 @@
-use crate as pallet_template;
-use frame_support::traits::{ConstU16, ConstU64};
+use crate::{self as pallet_club, WeightInfo};
+use frame_support::traits::{ConstU16, ConstU64, ConstU32};
 use frame_system as system;
 use sp_core::H256;
 use sp_runtime::{
@@ -18,7 +18,7 @@ frame_support::construct_runtime!(
 		UncheckedExtrinsic = UncheckedExtrinsic,
 	{
 		System: frame_system,
-		TemplateModule: pallet_template,
+		PalletClub: pallet_club,
 	}
 );
 
@@ -49,8 +49,11 @@ impl system::Config for Test {
 	type MaxConsumers = frame_support::traits::ConstU32<16>;
 }
 
-impl pallet_template::Config for Test {
+pub const MAX_MEMBER: u32 = 500;
+impl pallet_club::Config for Test {
 	type Event = Event;
+	type MaxMembers = ConstU32<MAX_MEMBER>;
+	type WeightInfo = pallet_club::weights::SubstrateWeight<Test>;
 }
 
 // Build genesis storage according to the mock runtime.

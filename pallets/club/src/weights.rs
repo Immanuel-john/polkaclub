@@ -32,13 +32,25 @@
 use frame_support::{traits::Get, weights::Weight};
 use sp_std::marker::PhantomData;
 
+pub trait WeightInfo {
+	fn add_club_member(s: u32,) -> Weight;
+	fn remove_club_member() -> Weight;
+}
+
 /// Weight functions for `pallet_club`.
-pub struct WeightInfo<T>(PhantomData<T>);
-impl<T: frame_system::Config> pallet_club::WeightInfo for WeightInfo<T> {
+// pub struct WeightInfo<T>(PhantomData<T>);
+pub struct SubstrateWeight<T>(PhantomData<T>);
+impl<T: frame_system::Config> WeightInfo for SubstrateWeight<T> {
 	// Storage: Club Club (r:1 w:1)
 	/// The range of component `s` is `[0, 100]`.
 	fn add_club_member(_s: u32, ) -> Weight {
-		(10_429_000 as Weight)
+		(10_626_000 as Weight)
+			.saturating_add(T::DbWeight::get().reads(1 as Weight))
+			.saturating_add(T::DbWeight::get().writes(1 as Weight))
+	}
+	// Storage: Club Club (r:1 w:1)
+	fn remove_club_member() -> Weight {
+		(12_000_000 as Weight)
 			.saturating_add(T::DbWeight::get().reads(1 as Weight))
 			.saturating_add(T::DbWeight::get().writes(1 as Weight))
 	}

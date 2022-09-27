@@ -271,7 +271,7 @@ pub const MAX_MEMBER: u32 = 500;
 impl pallet_club::Config for Runtime {
 	type Event = Event;
 	type MaxMembers = ConstU32<MAX_MEMBER>;
-	// type WeightInfo = pallet_club::weights::SubstrateWeight<Runtime>;
+	type WeightInfo = pallet_club::weights::SubstrateWeight<Runtime>;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.

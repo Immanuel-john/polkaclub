@@ -17,18 +17,19 @@ benchmarks! {
         assert_event::<T>(Event::ClubMemberAdded(club_name, caller).into());  
 	}
 
-	// remove_club_member {
-	// 	let s = 100u64;
-	// 	let caller: T::AccountId = whitelisted_caller();
-	// 	<Club<T>>::try_mutate(&s, |account_ids| account_ids
-	// 		.try_push(caller.clone()))
-	// 		.map_err(|_| <Error<T>>::MaxMembersReached);
+	remove_club_member {
+		let s = 100u64;
+		let club_name = s.to_be_bytes().to_vec();
+		let caller: T::AccountId = whitelisted_caller();
+		<Club<T>>::try_mutate(&club_name, |account_ids| account_ids
+			.try_push(caller.clone()))
+			.map_err(|_| <Error<T>>::MaxMembersReached);
 		
 	
-	// }: _(RawOrigin::Root, s.into(), caller.clone())
-	// verify {
-    //     assert_event::<T>(Event::ClubMemberRemoved(s.into(), caller).into());  
-	// }
+	}: _(RawOrigin::Root, club_name.clone(), caller.clone())
+	verify {
+        assert_event::<T>(Event::ClubMemberRemoved(club_name, caller).into());  
+	}
 
 	impl_benchmark_test_suite!(Club, crate::mock::new_test_ext(), crate::mock::Test);
 }

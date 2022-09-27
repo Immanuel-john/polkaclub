@@ -1,0 +1,8 @@
+Running unittests src/lib.rs (target/debug/deps/pallet_club-a9b87d606baf0435)
+
+running 3 tests
+test mock::__construct_runtime_integrity_test::runtime_integrity_tests ... ok
+test tests::it_works_for_add_club_member ... ok
+test tests::correct_error_for_none_value ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s

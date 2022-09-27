@@ -1,0 +1,125 @@
+immanueljohn@MacBook-Pro polkaclub % ./target/release/node-template benchmark pallet \              
+    --chain dev \
+    --execution=wasm \
+    --wasm-execution=compiled \
+    --pallet "pallet_club" \
+    --extrinsic "*" \
+    --steps 50 \
+    --repeat 20 \
+    --output pallets/club/weight.rs
+
+
+
+Pallet: "pallet_club", Extrinsic: "add_club_member", Lowest values: [], Highest values: [], Steps: 50, Repeat: 20
+Raw Storage Info
+========
+Storage: Club Club (r:1 w:1)
+
+Median Slopes Analysis
+========
+-- Extrinsic Time --
+
+Model:
+Time ~=       11
+    + s        0
+              µs
+
+Reads = 1 + (0 * s)
+Writes = 1 + (0 * s)
+
+Min Squares Analysis
+========
+-- Extrinsic Time --
+
+Data points distribution:
+    s   mean µs  sigma µs       %
+    0      10.9       0.3    2.7%
+    2      10.5       0.5    4.7%
+    4      10.6     0.489    4.6%
+    6      10.6     0.489    4.6%
+    8      10.6     0.489    4.6%
+   10      10.7     0.458    4.2%
+   12      10.3     0.458    4.4%
+   14      10.5       0.5    4.7%
+   16      10.6     0.489    4.6%
+   18      10.7     0.458    4.2%
+   20        11         0    0.0%
+   22      10.6     0.489    4.6%
+   24      10.2       0.4    3.9%
+   26      10.7     0.458    4.2%
+   28      10.7     0.458    4.2%
+   30      10.6     0.489    4.6%
+   32      10.6     0.489    4.6%
+   34      10.6     0.489    4.6%
+   36      10.5       0.5    4.7%
+   38      10.6     0.489    4.6%
+   40      10.5       0.5    4.7%
+   42      10.5       0.5    4.7%
+   44      10.2       0.4    3.9%
+   46      10.6     0.489    4.6%
+   48      10.9       0.3    2.7%
+   51      10.7     0.458    4.2%
+   53      10.2       0.4    3.9%
+   55      10.4     0.489    4.7%
+   57      10.4     0.489    4.7%
+   59      10.5       0.5    4.7%
+   61      10.1       0.3    2.9%
+   63      10.5       0.5    4.7%
+   65      10.6     0.489    4.6%
+   67      10.4     0.489    4.7%
+   69      10.2       0.4    3.9%
+   71      10.4     0.489    4.7%
+   73      10.6     0.489    4.6%
+   75      10.3     0.458    4.4%
+   77      10.9       0.3    2.7%
+   79      10.5       0.5    4.7%
+   81        10         0    0.0%
+   83      10.2       0.4    3.9%
+   85        11         0    0.0%
+   87      10.4     0.489    4.7%
+   89      10.4     0.489    4.7%
+   91      10.3     0.458    4.4%
+   93        10         0    0.0%
+   95      10.6     0.489    4.6%
+   97      10.6     0.489    4.6%
+  100      10.8       0.4    3.7%
+
+Quality and confidence:
+param     error
+s             0
+
+Model:
+Time ~=    10.62
+    + s        0
+              µs
+
+Reads = 1 + (0 * s)
+Writes = 1 + (0 * s)
+
+Pallet: "pallet_club", Extrinsic: "remove_club_member", Lowest values: [], Highest values: [], Steps: 50, Repeat: 20
+Raw Storage Info
+========
+Storage: Club Club (r:1 w:1)
+
+Median Slopes Analysis
+========
+-- Extrinsic Time --
+
+Model:
+Time ~=       12
+              µs
+
+Reads = 1
+Writes = 1
+
+Min Squares Analysis
+========
+-- Extrinsic Time --
+
+Model:
+Time ~=       12
+              µs
+
+Reads = 1
+Writes = 1
+
